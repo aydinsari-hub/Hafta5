@@ -1,40 +1,40 @@
-# Kampüs Etkinlikleri - Sprint 2 (CSS ve Responsive Tasarım)
+https://hafta2-gamma.vercel.app
 
-Bu proje, "CSS ve Responsive Tasarım" (Sprint 2) görevi kapsamında geliştirilmiştir. Projede herhangi bir CSS kütüphanesi (Bootstrap, Tailwind vb.) kullanılmadan, tamamen saf (vanilla) HTML ve CSS ile mobil öncelikli (mobile-first) ve duyarlı (responsive) bir arayüz tasarlanmıştır.
+# Kampüs Etkinlikleri — Sprint 4 (Vite, TypeScript ve React)
 
-## 🚀 Projenin Özellikleri
+Sprint 3'teki site `frontend/` klasöründe Vite + React + TypeScript ile yeniden yazıldı. 5 sayfa (Ana Sayfa, Etkinlikler, Detay, Ekle, Güncelle) tek `App.tsx` içinde; sayfa geçişi ve arama `useState` ile çalışır, sekme başlığı `useEffect` ile değişir. Router bu sprintte yok (Sprint 6).
 
-* **Mobil Uyumlu Tasarım:** Slayt görevlerine uygun olarak CSS Grid kullanılmış, telefonda tek sütun, masaüstü ekranlarda ise yan yana dizilen kart yapıları oluşturulmuştur.
-* **Form Validasyonu:** Etkinlik Ekle ve Güncelle sayfalarında HTML5 zorunluluk (required) kuralları uygulanmış, boş bırakılan alanların CSS `:invalid` seçicisi ile kırmızı çerçeveyle uyarılması sağlanmıştır.
-* **Kişiselleştirilmiş Tasarım Kuralları:** CSS değişkenleri (`:root`) kullanılarak proje sahibinin öğrenci numarasına göre dinamik renk ve font atamaları yapılmıştır.
-* **Sayfa Yapıları:**
-  * `index.html` (Ana Sayfa - Etkinlik listesi)
-  * `etkinlik-detay.html` (Grid yapısı ile afiş ve detay ekranı)
-  * `etkinlik-ekle.html` (Yeni etkinlik formu)
-  * `etkinlik-guncelle.html` (Mevcut etkinlik formu)
+> Vercel ayarı: Root Directory → `frontend`, Framework Preset → `Vite`.
 
-## 🎨 Tasarım Detayları (Öğrenci Numarasına Göre)
+## Çalıştırma
 
-Görev gereksinimlerine göre tasarım tamamen öğrenci numarasına (2416501056) göre şekillendirilmiştir:
+```bash
+cd frontend
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # hatasız bitmeli
+npm run preview
+```
 
-* **Renk Hesaplaması:** Öğrenci numarasının 360'a göre modu hesaplanmış (**336** tonu) ve HSL formatında renk paleti oluşturulmuştur.
-  * Ana Renk: `hsl(336, 60%, 35%)`
-  * Zemin Rengi: `hsl(336, 30%, 97%)`
-* **Tipografi:** Öğrenci numarasının son hanesi (**6**) baz alınarak tablo kurallarına göre font ailesi `"Courier New", monospace` olarak belirlenmiştir.
+## Dosyalar
 
-## 🛠️ Kullanılan Teknolojiler
+| Dosya | Görevi |
+|---|---|
+| `package.json` | Proje adı, komutlar (dev, build) ve paket listesi. |
+| `package-lock.json` | Yüklenen paketlerin tam sürümlerini sabitler. |
+| `node_modules/` | İndirilen paketler; GitHub'a gönderilmez. |
+| `tsconfig*.json` | TypeScript derleyici ayarları. |
+| `vite.config.ts` | Vite ayarları ve React eklentisi. |
+| `index.html` | Tek HTML dosyası; içinde boş `div#root` bulunur. |
+| `src/main.tsx` | React'i başlatır ve `App`'i `#root`'a çizer. |
+| `src/App.tsx` | Uygulamanın ana bileşeni; 5 sayfanın hepsi burada. |
+| `src/App.css` | Sprint 3'teki CSS (öğrenci numarasına göre renk/font). |
+| `src/index.css` | Genel stil dosyası; bu sprintte boş. |
+| `src/types/campus-event.ts` | `Category` union tipi ve `CampusEvent` arayüzü. |
+| `src/data/events.ts` | Tipli 6 etkinlik kaydı (`CampusEvent[]`). |
+| `src/utils/filter-events.ts` | Saf fonksiyonlar: `searchEvents`, `filterByCategory`, `findEventById`. |
+| `public/` | Olduğu gibi kopyalanan dosyalar (`afis.svg`). |
 
-* HTML5
-* CSS3 (Flexbox & CSS Grid)
-* Git & GitHub
-* Vercel (Canlıya Alma)
+## Geliştirici
 
-## 🔗 Canlı Demo
-
-Projenin çalışan canlı haline Vercel üzerinden ulaşabilirsiniz: 
-👉 [Kampüs Etkinlikleri - Vercel Demo](https://hafta2-gamma.vercel.app)
-
-## 👨‍💻 Geliştirici
-
-**Aydın Sarı**  
-Öğrenci No: 2416501056
+**Aydın Sarı** · Öğrenci No: 2416501056
