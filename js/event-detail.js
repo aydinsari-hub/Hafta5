@@ -12,11 +12,13 @@ function formatTarih(tarihStr) {
 }
 
 const container = document.querySelector("#detay");
+const baslikElem = document.querySelector(".ust-bilgi h1");
 const id = new URLSearchParams(window.location.search).get("id");
 const event = events.find((e) => e.id === id);
 
 if (!event) {
   document.title = "Etkinlik bulunamadı";
+  if (baslikElem) baslikElem.textContent = "Etkinlik bulunamadı";
   if (container) {
     container.innerHTML = `
       <div class="hata-kutusu" style="max-width:100%; margin-bottom:20px;">
@@ -27,6 +29,7 @@ if (!event) {
   }
 } else {
   document.title = event.title;
+  if (baslikElem) baslikElem.textContent = event.title;
   if (container) {
     container.innerHTML = `
       <div class="detay-layout">
