@@ -11,11 +11,21 @@ function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
   return (
     <article className="detay detay-layout">
       <div className="detay-sol">
-        {event.image && (
+        {event.image ? (
           <figure className="afis">
             <img src={event.image} alt={`${event.title} afişi`} />
             <figcaption className="afis-alti">{event.title} afişi</figcaption>
           </figure>
+        ) : (
+          <>
+            <div className="afis-kutu">
+              <h2>{event.title}</h2>
+              <p>
+                {formatDate(event.date)} · {event.location}
+              </p>
+            </div>
+            <small className="afis-alti">{event.title} afişi</small>
+          </>
         )}
 
         <section className="aciklama-bolumu">
