@@ -1,0 +1,36 @@
+import type { PageName } from "../../types/page";
+
+interface NavigationProps {
+  current: PageName;
+  onNavigate: (page: PageName) => void;
+}
+
+const menuItems: { name: PageName; label: string }[] = [
+  { name: "home", label: "Ana Sayfa" },
+  { name: "events", label: "Etkinlikler" },
+  { name: "add", label: "Ekle" },
+];
+
+function Navigation({ current, onNavigate }: NavigationProps) {
+  return (
+    <nav className="menu-serit">
+      <div className="kapsayici ana-menu">
+        {menuItems.map((item) => (
+          <a
+            key={item.name}
+            href="#"
+            aria-current={current === item.name ? "page" : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate(item.name);
+            }}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+export default Navigation;
